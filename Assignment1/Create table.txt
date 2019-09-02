@@ -1,0 +1,187 @@
+CREATE TABLE a_get_g (
+    id                        INTEGER NOT NULL,
+    date_correct              DATE,
+    grade_gradeid             INTEGER NOT NULL,
+    assignment_assignmentid   INTEGER NOT NULL
+);
+
+ALTER TABLE a_get_g ADD CONSTRAINT a_get_g_pk PRIMARY KEY ( id );
+
+CREATE TABLE admin (
+    adminid     INTEGER NOT NULL,
+    name        VARCHAR(50),
+    gender      CHAR(1),
+    birthdate   DATE,
+    phone       INTEGER,
+    password    VARCHAR(24)
+);
+
+ALTER TABLE admin ADD CONSTRAINT admin_pk PRIMARY KEY ( adminid );
+
+CREATE TABLE assignment (
+    assignmentid     INTEGER NOT NULL,
+    assignmentname   VARCHAR(50),
+    teacher_nip      INTEGER NOT NULL
+);
+
+ALTER TABLE assignment ADD CONSTRAINT assignment_pk PRIMARY KEY ( assignmentid );
+
+CREATE TABLE attendance (
+    attendanceid        INTEGER NOT NULL,
+    totalattend         INTEGER,
+    totalclassmeeting   INTEGER
+);
+
+ALTER TABLE attendance ADD CONSTRAINT attendance_pk PRIMARY KEY ( attendanceid );
+
+CREATE TABLE class (
+    classid       INTEGER NOT NULL,
+    classnumber   VARCHAR(10)
+);
+
+ALTER TABLE class ADD CONSTRAINT class_pk PRIMARY KEY ( classid );
+
+CREATE TABLE grade (
+    gradeid       INTEGER NOT NULL,
+    subjectname   VARCHAR(50),
+    score         INTEGER,
+    "Index"       VARCHAR(2)
+);
+
+ALTER TABLE grade ADD CONSTRAINT grade_pk PRIMARY KEY ( gradeid );
+
+CREATE TABLE materials (
+    materialsid     INTEGER NOT NULL,
+    materialsname   VARCHAR(50)
+);
+
+ALTER TABLE materials ADD CONSTRAINT materials_pk PRIMARY KEY ( materialsid );
+
+CREATE TABLE parent (
+    parentid        INTEGER NOT NULL,
+    name            VARCHAR(50),
+    gender          CHAR(1),
+    birthdate       DATE,
+    phone           INTEGER,
+    password        VARCHAR(24),
+    admin_adminid   INTEGER NOT NULL
+);
+
+ALTER TABLE parent ADD CONSTRAINT parent_pk PRIMARY KEY ( parentid );
+
+CREATE TABLE s_has_m (
+    id                      INTEGER NOT NULL,
+    materials_name          VARCHAR(50),
+    subject_subjectid       INTEGER NOT NULL,
+    materials_materialsid   INTEGER NOT NULL
+);
+
+ALTER TABLE s_has_m ADD CONSTRAINT s_has_m_pk PRIMARY KEY ( id );
+
+CREATE TABLE schedule (
+    scheduleid   INTEGER NOT NULL,
+    "Date"       DATE,
+    time         DATE
+);
+
+ALTER TABLE schedule ADD CONSTRAINT schedule_pk PRIMARY KEY ( scheduleid );
+
+CREATE TABLE student (
+    nis                       INTEGER NOT NULL,
+    name                      VARCHAR(50),
+    gender                    CHAR(1),
+    birthdate                 DATE,
+    phone                     INTEGER,
+    password                  VARCHAR(24),
+    grade_gradeid             INTEGER NOT NULL,
+    subject_subjectid         INTEGER NOT NULL,
+    attendance_attendanceid   INTEGER NOT NULL,
+    admin_adminid             INTEGER NOT NULL
+);
+
+ALTER TABLE student ADD CONSTRAINT student_pk PRIMARY KEY ( nis );
+
+CREATE TABLE subject (
+    subjectid     INTEGER NOT NULL,
+    subjectname   VARCHAR(50)
+);
+
+ALTER TABLE subject ADD CONSTRAINT subject_pk PRIMARY KEY ( subjectid );
+
+CREATE TABLE t_has_s (
+    id                    INTEGER NOT NULL,
+    schedule_on           DATE,
+    schedule_scheduleid   INTEGER NOT NULL,
+    teacher_nip           INTEGER NOT NULL
+);
+
+ALTER TABLE t_has_s ADD CONSTRAINT t_has_s_pk PRIMARY KEY ( id );
+
+CREATE TABLE teacher (
+    nip             INTEGER NOT NULL,
+    name            VARCHAR(50),
+    gender          CHAR(1),
+    birthdate       DATE,
+    phone           INTEGER,
+    password        VARCHAR(24),
+    class_classid   INTEGER NOT NULL,
+    admin_adminid   INTEGER NOT NULL
+);
+
+ALTER TABLE teacher ADD CONSTRAINT teacher_pk PRIMARY KEY ( nip );
+
+ALTER TABLE a_get_g
+    ADD CONSTRAINT a_get_g_assignment_fk FOREIGN KEY ( assignment_assignmentid )
+        REFERENCES assignment ( assignmentid );
+
+ALTER TABLE a_get_g
+    ADD CONSTRAINT a_get_g_grade_fk FOREIGN KEY ( grade_gradeid )
+        REFERENCES grade ( gradeid );
+
+ALTER TABLE assignment
+    ADD CONSTRAINT assignment_teacher_fk FOREIGN KEY ( teacher_nip )
+        REFERENCES teacher ( nip );
+
+ALTER TABLE parent
+    ADD CONSTRAINT parent_admin_fk FOREIGN KEY ( admin_adminid )
+        REFERENCES admin ( adminid );
+
+ALTER TABLE s_has_m
+    ADD CONSTRAINT s_has_m_materials_fk FOREIGN KEY ( materials_materialsid )
+        REFERENCES materials ( materialsid );
+
+ALTER TABLE s_has_m
+    ADD CONSTRAINT s_has_m_subject_fk FOREIGN KEY ( subject_subjectid )
+        REFERENCES subject ( subjectid );
+
+ALTER TABLE student
+    ADD CONSTRAINT student_admin_fk FOREIGN KEY ( admin_adminid )
+        REFERENCES admin ( adminid );
+
+ALTER TABLE student
+    ADD CONSTRAINT student_attendance_fk FOREIGN KEY ( attendance_attendanceid )
+        REFERENCES attendance ( attendanceid );
+
+ALTER TABLE student
+    ADD CONSTRAINT student_grade_fk FOREIGN KEY ( grade_gradeid )
+        REFERENCES grade ( gradeid );
+
+ALTER TABLE student
+    ADD CONSTRAINT student_subject_fk FOREIGN KEY ( subject_subjectid )
+        REFERENCES subject ( subjectid );
+
+ALTER TABLE t_has_s
+    ADD CONSTRAINT t_has_s_schedule_fk FOREIGN KEY ( schedule_scheduleid )
+        REFERENCES schedule ( scheduleid );
+
+ALTER TABLE t_has_s
+    ADD CONSTRAINT t_has_s_teacher_fk FOREIGN KEY ( teacher_nip )
+        REFERENCES teacher ( nip );
+
+ALTER TABLE teacher
+    ADD CONSTRAINT teacher_admin_fk FOREIGN KEY ( admin_adminid )
+        REFERENCES admin ( adminid );
+
+ALTER TABLE teacher
+    ADD CONSTRAINT teacher_class_fk FOREIGN KEY ( class_classid )
+        REFERENCES class ( classid );
