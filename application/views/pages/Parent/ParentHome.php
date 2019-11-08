@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Parent - Home</title>
-    <link rel="stylesheet" href="Style/style.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>asset/style/style.css">
     <style>
 a:link, a:visited {
   color: black;
