@@ -6,6 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Teacher Home</title>
     <link rel="stylesheet" href="<?php echo base_url();?>asset/style/style.css">
+    <style>
+a:link, a:visited {
+  color: black;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-style: solid;
+  margin: 5px;
+  height: 20px;
+  width: 150px;
+}
+a:hover, a:active {
+  background-color: red;
+}
+</style>
 </head>
 <body>
 
@@ -29,12 +45,12 @@
                           <div style="text-align:center; margin-left:-30px">Name of Teacher</div>
                           <div style="text-align:center; margin-left:-30px">Teacher NIP</div>
                      </ul>
-                     <input style=" width:150px; height:40px; margin-bottom:8px; "  type="submit" value="Grade Student"/><br/>
-                     <input style=" width:150px; height:40px; margin-bottom:8px;"  type="submit" value="Attendance Student"/><br/>
-                     <input style=" width:150px; height:40px; margin-bottom:8px;"  type="submit" value="Schedule"/><br/>
-                     <input style=" width:150px; height:40px; margin-bottom:8px;"  type="submit" value="Materials"/><br/> 
-                     <input style=" width:150px; height:40px; margin-bottom:8px;"  type="submit" value="Assignment"/><br/>
-                     <input style=" width:150px; height:40px; margin-bottom:8px;"  type="submit" value="Profile"/><br/> 
+                     <a href="" target="_blank" >Grade</a>
+                     <a href="" target="_blank" >Attendance</a>
+                     <a href="" target="_blank" >Schedule</a>
+                     <a href="" target="_blank" >Materials</a>
+                     <a href="" target="_blank" >Assignment</a>
+                     <a href="" target="_blank" >Profile</a>
             </th>
 
                  <th colspan="2" width="10000px" height="650px" > INFORMATION </td>

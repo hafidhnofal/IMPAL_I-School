@@ -22,13 +22,13 @@ a:hover, a:active {
   background-color: red;
 }
 </style>
-
 </head>
 <body>
 
 <table>
     <div class=" ">
       <tr>
+        <th style="font-size : 200%" width="1000px">Parent</th>
         <th style="text-align : center; font-size : 200%" width="5000px">I-School</th>
         <th><button type="button" style="background:red; font-size : 20px; width:100px; height:50px">Log Out</button></th>
       </tr>
@@ -40,10 +40,10 @@ a:hover, a:active {
                  <th rowspan="2" width="250px" ><form>
 
                       <div style="margin-left:1px; font:100; margin-top:-250px"></div>
-                      <img src="../img/parent.png" alt="image" title="Legend" width="150" height="150"/>
+                      <img src="../img/parent.png" alt="image" title="Legend" width="200" height="200"/>
                      <ul>
-                          <div style="text-align:center; margin-left:-30px">Name of Parent</div>
-                          <div style="text-align:center; margin-left:-30px">Parent of Student Name</div>
+                          <div style="text-align:center; margin-left:-30px"><?php echo $user['name'];?></div>
+                          <div style="text-align:center; margin-left:-30px"><?php echo $user['name'];?></div>
                      </ul>
                      <a href="" target="_blank" >Grade</a>
                      <a href="" target="_blank" >Attendance</a>
