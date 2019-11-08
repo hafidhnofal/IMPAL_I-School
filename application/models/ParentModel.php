@@ -1,7 +1,5 @@
 <?php
 class ParentModel extends CI_Model{
-
-
     function get_schedule($id, $role){
         $this->db->where($tableid, $id);
         $usr=$this->db->get($role);
@@ -19,4 +17,15 @@ class ParentModel extends CI_Model{
         return $usr->row_array();
     }
 
+    function get_data_user($id){
+        $this->db->where("phone", $id);
+        $usr=$this->db->get("parent");
+        return $usr->row_array();
+    }
+
+    function get_data_student($id){
+        $this->db->where("nis", $id);
+        $usr=$this->db->get("student");
+        return $usr->row_array();
+    }
 }

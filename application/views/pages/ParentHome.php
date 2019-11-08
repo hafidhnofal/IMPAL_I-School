@@ -32,7 +32,7 @@ a:hover, a:active {
   height: 30px;
   width: 70px;
 }
-.b:hover,:active {
+.b:hover,.b:active {
   background-color: #cc0000;
 }
 </style>
@@ -44,7 +44,7 @@ a:hover, a:active {
       <tr>
         <th style="font-size : 200%" width="1000px">Parent</th>
         <th style="text-align : center; font-size : 200%" width="5000px">I-School</th>
-        <th><a href="" class="b">Log Out</a></th>
+        <th><a href="<?php echo base_url();?>login/logout" class="b">Log Out</a></th>
       </tr>
     </div>
   </table>
@@ -57,12 +57,12 @@ a:hover, a:active {
                       <img src="../img/parent.png" alt="image" title="Legend" width="200" height="200"/>
                      <ul>
                           <div style="text-align:center; margin-left:-30px"><?php echo $user['name'];?></div>
-                          <div style="text-align:center; margin-left:-30px"><?php echo $user['name'];?></div>
+                          <div style="text-align:center; margin-left:-30px"><?php echo $student['name'];?></div>
                      </ul>
-                     <a href=""  >Grade</a>
-                     <a href="" >Attendance</a>
-                     <a href=""  >Schedule</a>
-                     <a href=""  >Profile</a>
+                     <a href="<?php echo base_url();?>parentt/view_grade"  >Grade</a>
+                     <a href="<?php echo base_url();?>parentt/view_attend" >Attendance</a>
+                     <a href="<?php echo base_url();?>parentt/view_schedule"  >Schedule</a>
+                     <a href="<?php echo base_url();?>parentt/view_profile"  >Profile</a>
 
                  <th colspan="2" width="10000px" height="650px" >  </td>
          </table>

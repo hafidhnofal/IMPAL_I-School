@@ -9,5 +9,11 @@ class LoginModel extends CI_Model{
         return $usr->row_array();
     }
 
+    function get_data_student($id){
+        $this->db->where("nis", $id);
+        $usr=$this->db->get("student");
+        return $usr->row_array();
+    }
+
 
 }

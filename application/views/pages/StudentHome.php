@@ -46,7 +46,7 @@ a:hover, a:active {
       <tr>
         <th style="font-size : 200%" width="1000px">Student</th>
         <th style="text-align : center; font-size : 200%" width="5000px">I-School</th>
-        <th><a href="" class="b">Log Out</a></th>
+        <th><a href="<?php echo base_url();?>login/logout" class="b">Log Out</a></th>
       </tr>
     </div>
   </table>
@@ -61,12 +61,12 @@ a:hover, a:active {
                           <div style="text-align:center; margin-left:-30px"><?php echo $user['name'];?></div>
                           <div style="text-align:center; margin-left:-30px"><?php echo $user['nis'];?></div>
                      </ul>
-                     <a href="" >Grade</a>
-                     <a href="" >Attendance</a>
-                     <a href="" >Schedule</a>
-                     <a href="" >Materials</a>
-                     <a href="" >Assignment</a>
-                     <a href="" >Profile</a>
+                     <a href="<?php echo base_url();?>student/view_grade" >Grade</a>
+                     <a href="<?php echo base_url();?>student/view_attend" >Attendance</a>
+                     <a href="<?php echo base_url();?>student/view_schedule" >Schedule</a>
+                     <a href="<?php echo base_url();?>student/view_materials" >Materials</a>
+                     <a href="<?php echo base_url();?>student/view_grade" >Assignment</a>
+                     <a href="<?php echo base_url();?>student/view_profile" >Profile</a>
 
                  <th colspan="2" width="10000px" height="650px" > INFORMATION </td>
          </table>

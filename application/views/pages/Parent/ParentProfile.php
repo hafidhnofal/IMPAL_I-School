@@ -33,7 +33,7 @@ a:hover, a:active {
   height: 30px;
   width: 70px;
 }
-.b:hover,:active {
+.b:hover,.b:active {
   background-color: #cc0000;
 }
 </style>
@@ -44,7 +44,7 @@ a:hover, a:active {
     <div class=" ">
       <tr>
         <th style="text-align : center; font-size : 200%" width="5000px">I-School</th>
-        <th><a href="" class="b">Log Out</a></th>
+        <th><a href="<?php echo base_url();?>login/logout" class="b">Log Out</a></th>
             </tr>
     </div>
   </table>
@@ -56,19 +56,19 @@ a:hover, a:active {
                       <div style="margin-left:1px; font:100; margin-top:-170px"></div>
                       <img src="../img/parent.png" alt="image" title="Legend" width="150" height="150"/>
                      <ul>
-                          <div style="text-align:center; margin-left:-30px">Name of Student</div>
-                          <div style="text-align:center; margin-left:-30px">NISN</div>
+                     <div style="text-align:center; margin-left:-30px"><?php echo $user['name'];?></div>
+                          <div style="text-align:center; margin-left:-30px"><?php echo $student['name'];?></div>
                      </ul>
-                     <a href=""  >Grade</a>
-                     <a href=""  >Attendance</a>
-                     <a href=""  >Schedule</a>
-                     <a href=""  style=" background:blue">Profile</a>
+                     <a href="<?php echo base_url();?>parentt/view_grade"  >Grade</a>
+                     <a href="<?php echo base_url();?>parentt/view_attend" >Attendance</a>
+                     <a href="<?php echo base_url();?>parentt/view_schedule"  >Schedule</a>
+                     <a href="<?php echo base_url();?>parentt/view_profile"  style=" background:blue">Profile</a>
 
                  <th colspan="2" width="10000px" height="650px" >
-                   <h2> NIS           : Student NIS </h2>
-                   <h2> Full Name     : Student Name</h2>
+                   <h2> NIS           : <?php echo $student['nis'];?> </h2>
+                   <h2> Full Name     : <?php echo $student['name'];?></h2>
                    <h2> Class         : Student Class</h2>
-                   <h2> Birthday      : Student Birthday</h2>
+                   <h2> Birthday      : <?php echo $student['birthdate'];?></h2>
                    <h2> Status        : Student Status</h2>
               <!-- <table border="1" >
                 <tr>

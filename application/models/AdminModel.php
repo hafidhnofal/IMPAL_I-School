@@ -11,5 +11,9 @@ class AdminModel extends CI_Model{
             
 			return $this->db->insert('admin', $data);
         }
-        
+        function get_data_user($id){
+			$this->db->where("adminid", $id);
+			$usr=$this->db->get("admin");
+			return $usr->row_array();
+		}
 }

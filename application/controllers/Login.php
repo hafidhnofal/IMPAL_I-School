@@ -31,7 +31,7 @@ class Login extends CI_Controller{
         $cek = $this->LoginModel->cek_login($role,$where)->num_rows();
 
         if($cek > 0){
-            echo "<script>alert('Berhasil');</script>";           
+            //echo "<script>alert('Berhasil');</script>";           
             $data_session = array(
                 'id' => $id,
                 'status' => "login");
@@ -45,6 +45,8 @@ class Login extends CI_Controller{
                 $this->load->view('pages/StudentHome', $data);
     
             }elseif($role=="parent"){
+                $as=$this->LoginModel->get_data_user($id, $tableid, $role);
+                $data['student']=$this->LoginModel->get_data_student($as['nis']);
                 $this->load->view('pages/ParentHome', $data);
     
             }elseif($role=="teacher"){
