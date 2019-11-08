@@ -21,6 +21,20 @@ a:link, a:visited {
 a:hover, a:active {
   background-color: red;
 }
+.b {
+  color: black;
+  padding-top: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  background-color: #ff0033;
+  font-size: 15px;
+  height: 30px;
+  width: 70px;
+}
+.b:hover,:active {
+  background-color: #cc0000;
+}
 </style>
 </head>
 <body>
@@ -29,8 +43,8 @@ a:hover, a:active {
     <div class=" ">
       <tr>
         <th style="text-align : center; font-size : 200%" width="5000px">I-School</th>
-        <th><button type="button" style="background:red; font-size : 20px; width:100px; height:50px">Log Out</button></th>
-      </tr>
+        <th><a href="" class="b">Log Out</a></th>
+            </tr>
     </div>
   </table>
 
@@ -44,10 +58,10 @@ a:hover, a:active {
                           <div style="text-align:center; margin-left:-30px">Name of Parent</div>
                           <div style="text-align:center; margin-left:-30px">Parent of Student Name</div>
                      </ul>
-                     <a href="" target="_blank" >Grade</a>
-                     <a href="" target="_blank" >Attendance</a>
-                     <a href="" target="_blank" style=" background:blue">Schedule</a>
-                     <a href="" target="_blank" >Profile</a>
+                     <a href=""  >Grade</a>
+                     <a href="" >Attendance</a>
+                     <a href=""  style=" background:blue">Schedule</a>
+                     <a href="" >Profile</a>
 
                  <th colspan="2" width="10000px" height="650px" >
               <table border="1" >
