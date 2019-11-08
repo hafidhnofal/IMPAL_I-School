@@ -14,6 +14,16 @@ class TeacherModel extends CI_Model{
         return $usr->row_array();
     }
 
+    function input($id){
+        $data = array(
+            'id' => $id,
+            'nama' => $this->input->post('name'),
+            'email' => $this->input->post('email'),
+            'isi' => $this->input->post('body')
+        );
+        
+        return $this->db->insert('admin', $data);
+    }
 
 
 }

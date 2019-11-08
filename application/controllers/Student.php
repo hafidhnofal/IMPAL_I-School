@@ -11,11 +11,11 @@ class Student extends CI_Controller{
 		redirect(base_url());
     }
 
-    function view_Schedule(){
+    function view_schedule(){
         $data['view']=$this->StudentModel->get_schedule($id, $tableid, $role);
     }
 
-    function view_Grade(){
+    function view_grade(){
         $data['view']=$this->StudentModel->get_grade($id, $tableid, $role);
     }
 

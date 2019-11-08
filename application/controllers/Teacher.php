@@ -12,27 +12,27 @@ class Teacher extends CI_Controller{
     }
 
     function input_attend(){
-        $data['view']=$this->TeacherModel->get_schedule($id, $tableid, $role);
+        $data['view']=$this->TeacherModel->input($id, $tableid, $role);
     }
 
     function input_materials(){
-        $data['view']=$this->TeacherModel->get_schedule($id, $tableid, $role);
+        $data['view']=$this->TeacherModel->input($id, $tableid, $role);
     }
 
     function input_assignment(){
-        $data['view']=$this->TeacherModel->get_schedule($id, $tableid, $role);
+        $data['view']=$this->TeacherModel->input($id, $tableid, $role);
     }
 
     function input_grade(){
-        $data['view']=$this->TeacherModel->get_schedule($id, $tableid, $role);
+        $data['view']=$this->TeacherModel->input($id, $tableid, $role);
     }
 
     function upload_assignment(){
-        $data['view']=$this->TeacherModel->get_schedule($id, $tableid, $role);
+        $data['view']=$this->TeacherModel->input($id, $tableid, $role);
     }
 
     function view_materials(){
-        $data['view']=$this->TeacherModel->get_schedule($id, $tableid, $role);
+        $data['view']=$this->TeacherModel->get_materials($id, $tableid, $role);
     }
 
     function view_Grade(){

@@ -4,53 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Student - Home</title>
-    <link rel="stylesheet" href="Style/style.css">
-    <style>
-a:link, a:visited {
-  color: black;
-  padding: 10px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-style: solid;
-  margin: 5px;
-  height: 20px;
-  width: 150px;
-}
-a:hover, a:active {
-  background-color: red;
-}
-</style>
+    <title>Teacher Home</title>
+    <link rel="stylesheet" href="<?php echo base_url();?>asset/style/style.css">
 </head>
 <body>
 
 <table>
     <div class=" ">
       <tr>
-        <th style="text-align : center; font-size : 200%" width="5000px">I-School</th>
-        <th><button type="button" style="background:red; font-size : 20px; width:100px; height:50px">Log Out</button></th>
+        <th style="font-size : 200%" width="1000px">Teacher</th>
+        <th style="text-align : center; font-size : 200%" width="5000px">I-School-Grade</th>
+        <th><button type="button" style="background:orange; font-size : 20px; width:100px; height:50px">Log Out</button></th>
       </tr>
     </div>
   </table>
 
-  <table>
+  <table border="2">
              <tr>
                  <th rowspan="2" width="250px" ><form>
 
-                      <div style="margin-left:1px; font:100; margin-top:-170px"></div>
-                      <img src="../img/teacher.png" alt="image" title="Legend" width="200" height="200" style ="padding-left=100px"/>
+                      <div style="margin-left:1px; font:100; margin-top:-10px"></div>
+                      <img src="../img/teacher.png" alt="image" title="Legend" width="200" height="200"/>
+                     <ul>
                           <div style="text-align:center; margin-left:-30px">Name of Teacher</div>
-                          <div style="text-align:center; margin-left:-30px">NIP</div>
+                          <div style="text-align:center; margin-left:-30px">Teacher NIP</div>
                      </ul>
-                     <a href="" target="_blank" >Grade</a>
-                     <a href="" target="_blank" >Attendance</a>
-                     <a href="" target="_blank" >Schedule</a>
-                     <a href="" target="_blank" >Materials</a>
-                     <a href="" target="_blank" >Assignment</a>
-                     <a href="" target="_blank" >Profile</a>
+                     <input style=" width:150px; height:40px; margin-bottom:8px; "  type="submit" value="Grade Student"/><br/>
+                     <input style=" width:150px; height:40px; margin-bottom:8px;"  type="submit" value="Attendance Student"/><br/>
+                     <input style=" width:150px; height:40px; margin-bottom:8px;"  type="submit" value="Schedule"/><br/>
+                     <input style=" width:150px; height:40px; margin-bottom:8px;"  type="submit" value="Materials"/><br/> 
+                     <input style=" width:150px; height:40px; margin-bottom:8px;"  type="submit" value="Assignment"/><br/>
+                     <input style=" width:150px; height:40px; margin-bottom:8px;"  type="submit" value="Profile"/><br/> 
+            </th>
 
                  <th colspan="2" width="10000px" height="650px" > INFORMATION </td>
          </table>
+         <center><nav> Name of School </nav></center>
+
+
 </body>
 </html>

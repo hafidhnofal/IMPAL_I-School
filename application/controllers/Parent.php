@@ -10,7 +10,7 @@ class Parent extends CI_Controller{
 		$this->session->sess_destroy();
 		redirect(base_url());
     }
-
+    
     function view_Schedule(){
         $data['view']=$this->StudentModel->get_schedule($id, $tableid, $role);
     }

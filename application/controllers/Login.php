@@ -1,8 +1,5 @@
 <?php
 class Login extends CI_Controller{
-    function v_login(){
-		$this->load->view('pages/login_v');
-    }
     function __construct(){
 		parent::__construct();		
 		$this->load->model('LoginModel');

@@ -9,7 +9,7 @@ class AdminModel extends CI_Model{
 				'isi' => $this->input->post('body')
             );
             
-			return $this->db->insert('komen', $data);
+			return $this->db->insert('admin', $data);
         }
         
 }
