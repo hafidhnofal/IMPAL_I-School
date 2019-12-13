@@ -7,7 +7,11 @@ class Login extends CI_Controller{
         $this->load->model('TeacherModel');
         $this->load->model('ParentModel');
         $this->load->model('StudentModel');
-	}
+    }
+    
+    function LoginO(){
+        $this->load->view('pages/f_login');
+    }
     
     function action_login(){
         $id = $this->input->post('id');
@@ -62,7 +66,7 @@ class Login extends CI_Controller{
 
         }else{
             $this->session->set_flashdata('alert', array('message' => 'ID or Password is Wrong!','class' => 'danger'));
-            $this->load->view('pages/f_login');
+            redirect(base_url('login/LoginO'));
          }
     }
 

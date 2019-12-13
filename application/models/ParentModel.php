@@ -1,20 +1,17 @@
 <?php
 class ParentModel extends CI_Model{
-    function get_schedule($id, $role){
-        $this->db->where($tableid, $id);
-        $usr=$this->db->get($role);
-        return $usr->row_array();
+    function get_grade($nis){
+        $this->db->distinct();
+        $array = array('nis' => $nis);
+        $this->db->like($array);
+        $this->db->join('subject', 'subjectid');
+        return $this->db->get('stu_has_sub')->result_array();
     }
-
-    function get_grade($id, $role){
-        $this->db->where($tableid, $id);
-        $usr=$this->db->get($role);
-        return $usr->row_array();
-    }
-    function get_attend($id, $role){
-        $this->db->where($tableid, $id);
-        $usr=$this->db->get($role);
-        return $usr->row_array();
+    function get_schedule_class($cls){
+        $this->db->where('classid',$cls);
+        $this->db->join('subject', 'subject.subjectid = t_has_s.subjectid');
+        $hasil = $this->db->get('t_has_s');
+        return $hasil->result_array();
     }
 
     function get_data_user($id){
