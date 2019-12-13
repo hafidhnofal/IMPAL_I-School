@@ -57,6 +57,7 @@ class Login extends CI_Controller{
             }elseif($role=="parent"){
                 $as=$this->LoginModel->get_data_user($id, $tableid, $role);
                 $data['student']=$this->LoginModel->get_data_student($as['nis']);
+                $data['parent']=$this->ParentModel->get_data_user($id);
                 $this->load->view('pages/ParentHome', $data);
     
             }elseif($role=="teacher"){

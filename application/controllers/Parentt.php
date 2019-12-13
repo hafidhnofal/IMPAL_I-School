@@ -5,41 +5,51 @@ class Parentt extends CI_Controller{
 		parent::__construct();		
 		$this->load->model('ParentModel');
 	}
+
+	function home(){
+        if(!$this->session->userdata('id') || $this->session->userdata('status')!='parent'){
+			    redirect(base_url());
+        }
+        
+        $as=$this->ParentModel->get_data_user($this->session->userdata('id'));
+        $data['student']=$this->ParentModel->get_data_student($as['nis']);
+        $data['parent']=$this->ParentModel->get_data_user($this->session->userdata('id'));
+        $this->load->view('pages/ParentHome', $data);
+    }
     
     function logout(){
 		$this->session->sess_destroy();
 		redirect(base_url());
+	}
+	
+	function grade($nis){
+        if(!$this->session->userdata('id') || $this->session->userdata('status')!='parent'){
+			redirect(base_url());
+        }
+        
+        $data['student']=$this->ParentModel->get_data_student($nis);
+        $data['parent']=$this->ParentModel->get_data_user($this->session->userdata('id'));
+        $data['grade']=$this->ParentModel->get_grade($nis);
+        $this->load->view('pages/Parent/grade', $data);
+    }
+
+    function schedule(){
+        if(!$this->session->userdata('id') || $this->session->userdata('status')!='parent'){
+			redirect(base_url());
+        }
+        $cls=$this->ParentModel->get_id_by_id($this->session->userdata('id'));
+        $data['student']=$this->ParentModel->get_data_user($this->session->userdata('id'));
+        $data['sc']=$this->ParentModel->get_schedule_class($cls);
+        $this->load->view('pages/Parent/schedule', $data);
+    }
+
+    function attendance(){
+        if(!$this->session->userdata('id') || $this->session->userdata('status')!='parent'){
+			redirect(base_url());
+        }
+
+        $data['student']=$this->ParentModel->get_data_user($this->session->userdata('id'));
+        $this->load->view('pages/Parent/attendance', $data);
     }
     
-    function view_schedule(){
-        $as=$this->ParentModel->get_data_user($this->session->userdata('id'));
-        $data['student']=$this->ParentModel->get_data_student($as['nis']);
-        $data['user']=$this->ParentModel->get_data_user($this->session->userdata('id'));
-        $this->load->view('pages/Parent/ParentSchedule', $data);
-        //$data['view']=$this->StudentModel->get_schedule($id, $tableid, $role);
-    }
-
-    function view_grade(){
-        $as=$this->ParentModel->get_data_user($this->session->userdata('id'));
-        $data['student']=$this->ParentModel->get_data_student($as['nis']);
-        $data['user']=$this->ParentModel->get_data_user($this->session->userdata('id'));
-        $this->load->view('pages/Parent/ParentGrade', $data);
-        //$data['view']=$this->StudentModel->get_grade($id, $tableid, $role);
-    }
-
-    function view_attend(){
-        $as=$this->ParentModel->get_data_user($this->session->userdata('id'));
-        $data['student']=$this->ParentModel->get_data_student($as['nis']);
-        $data['user']=$this->ParentModel->get_data_user($this->session->userdata('id'));
-        $this->load->view('pages/Parent/ParentAttend', $data);
-        //$data['view']=$this->StudentModel->get_attend($id, $tableid, $role);
-    }
-
-    function view_profile(){
-        $as=$this->ParentModel->get_data_user($this->session->userdata('id'));
-        $data['student']=$this->ParentModel->get_data_student($as['nis']);
-        $data['user']=$this->ParentModel->get_data_user($this->session->userdata('id'));
-        $this->load->view('pages/Parent/ParentProfile', $data);
-        //$data['view']=$this->StudentModel->get_attend($id, $tableid, $role);
-    }
 }

@@ -14,7 +14,7 @@ class Student extends CI_Controller{
 
     function home(){
         if(!$this->session->userdata('id') || $this->session->userdata('status')!='student'){
-			redirect(base_url());
+			    redirect(base_url());
         }
         
         $data['student']=$this->StudentModel->get_data_user($this->session->userdata('id'));
