@@ -32,7 +32,7 @@
             height: 30px;
             width: 70px;
 }
-.b:hover,:active {
+.b:hover,.b:active {
   background-color: #cc0000;
 }
     </style>

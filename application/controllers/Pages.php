@@ -8,8 +8,6 @@
             if(!file_exists(APPPATH.'views/pages/'.$page.'.php')){
 				show_404();
             }
-
-            echo base_url();
             $this->load->view('pages/'.$page);
             
         }

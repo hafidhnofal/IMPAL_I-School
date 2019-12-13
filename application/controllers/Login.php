@@ -2,7 +2,11 @@
 class Login extends CI_Controller{
     function __construct(){
 		parent::__construct();		
-		$this->load->model('LoginModel');
+        $this->load->model('LoginModel');
+        $this->load->model('AdminModel');
+        $this->load->model('TeacherModel');
+        $this->load->model('ParentModel');
+        $this->load->model('StudentModel');
 	}
     
     function action_login(){
@@ -34,14 +38,16 @@ class Login extends CI_Controller{
             //echo "<script>alert('Berhasil');</script>";           
             $data_session = array(
                 'id' => $id,
-                'status' => "login");
+                'status' => $role);
             $this->session->set_userdata($data_session);
-            $data['user']=$this->LoginModel->get_data_user($id, $tableid, $role);
+            //$data['user']=$this->LoginModel->get_data_user($id, $tableid, $role);
             
             if($role=="admin"){
+                $data['admin']=$this->AdminModel->get_data_user($this->session->userdata('id'));
                 $this->load->view('pages/AdminHome', $data);
     
             }elseif($role=="student"){
+                $data['student']=$this->StudentModel->get_data_user($this->session->userdata('id'));
                 $this->load->view('pages/StudentHome', $data);
     
             }elseif($role=="parent"){
@@ -50,13 +56,14 @@ class Login extends CI_Controller{
                 $this->load->view('pages/ParentHome', $data);
     
             }elseif($role=="teacher"){
+                $data['teacher']=$this->TeacherModel->get_data_user($this->session->userdata('id'));
                 $this->load->view('pages/TeacherHome', $data);
             }
 
-            }else{
-                $this->load->view('pages/f_login');
-                echo "<script>alert('ID or Password is Wrong, Please try again!');</script>";
-            }
+        }else{
+            $this->session->set_flashdata('alert', array('message' => 'ID or Password is Wrong!','class' => 'danger'));
+            $this->load->view('pages/f_login');
+         }
     }
 
     function logout(){
