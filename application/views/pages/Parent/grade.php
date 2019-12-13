@@ -42,10 +42,10 @@
 		
 		<ul class="nav menu">
 			<li><a href="<?php echo base_url();?>parentt/home"><em class="fa fa-home">&nbsp;</em> Home</a></li>
-			<li class="active"><a href="<?php echo base_url();?>parent/grade/<?= $student['nis'] ?>"><em class="fa fa-list-alt">&nbsp;</em> Grade</a></li>
+			<li class="active"><a href="<?php echo base_url();?>parentt/grade/<?= $student['nis'] ?>"><em class="fa fa-list-alt">&nbsp;</em> Grade</a></li>
 			<li><a href="<?php echo base_url();?>parentt/attendance/<?= $student['nis'] ?>"><em class="fa fa-list-alt">&nbsp;</em> Attendance</a></li>
             <li><a href="<?php echo base_url();?>parentt/schedule/<?= $student['nis'] ?>"><em class="fa fa-list-alt">&nbsp;</em> Schedule</a></li>
-			<li><a href="<?php echo base_url();?>parentt/profile"><em class="fa fa-pencil-square-o">&nbsp;</em> Profile</a></li>
+			<li><a href="<?php echo base_url();?>parentt/profile/<?= $student['nis'] ?>"><em class="fa fa-pencil-square-o">&nbsp;</em> Profile</a></li>
 	
 		</ul>
 	</div><!--/.sidebar-->

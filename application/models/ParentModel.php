@@ -22,7 +22,15 @@ class ParentModel extends CI_Model{
 
     function get_data_student($id){
         $this->db->where("nis", $id);
+        $this->db->join('class', 'class.classid = student.class_classid');
         $usr=$this->db->get("student");
         return $usr->row_array();
+    }
+
+    function get_id_by_id($nis){
+        $this->db->select('class_classid');
+        $this->db->from('student');
+        $this->db->where('nis',$nis);
+        return $this->db->get()->row()->class_classid;
     }
 }

@@ -3,11 +3,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Parent - Home</title>
+	<title>Parent - Profile</title>
 	<link href="<?php echo base_url();?>asset/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>asset/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>asset/css/datepicker3.css" rel="stylesheet">
-	<link href="<?php echo base_url();?>asset/css/styles.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>asset/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url();?>asset/css/style90.css"/>
 	<link rel="stylesheet" href="<?php echo base_url();?>asset/css/theme-lime.css" id="theme-css">
 	
 </head>
@@ -41,11 +42,11 @@
 		<div class="divider"></div>
 		
 		<ul class="nav menu">
-			<li class="active"><a href="<?php echo base_url();?>parentt/home"><em class="fa fa-home">&nbsp;</em> Home</a></li>
+			<li><a href="<?php echo base_url();?>parentt/home"><em class="fa fa-home">&nbsp;</em> Home</a></li>
 			<li><a href="<?php echo base_url();?>parentt/grade/<?= $student['nis'] ?>"><em class="fa fa-list-alt">&nbsp;</em> Grade</a></li>
 			<li><a href="<?php echo base_url();?>parentt/attendance/<?= $student['nis'] ?>"><em class="fa fa-list-alt">&nbsp;</em> Attendance</a></li>
-      <li><a href="<?php echo base_url();?>parentt/schedule/<?= $student['nis'] ?>"><em class="fa fa-list-alt">&nbsp;</em> Schedule</a></li>
-			<li><a href="<?php echo base_url();?>parentt/profile/<?= $student['nis'] ?>"><em class="fa fa-pencil-square-o">&nbsp;</em> Profile</a></li>
+            <li><a href="<?php echo base_url();?>parentt/schedule/<?= $student['nis'] ?>"><em class="fa fa-list-alt">&nbsp;</em> Schedule</a></li>
+			<li class="active"><a href="<?php echo base_url();?>parentt/profile/<?= $student['nis'] ?>"><em class="fa fa-pencil-square-o">&nbsp;</em> Profile</a></li>
 	
 		</ul>
 	</div><!--/.sidebar-->
@@ -56,14 +57,46 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Home</li>
+				<li class="active">Profile</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Home</h1>
-			</div>
+			<div class="col-md-12">
+				<div class="panel panel-default articles">
+					<div class="panel-heading">Your Profile</div>
+					
+					<div class="panel-body articles-container">
+                    <section class="hero-section spad">
+                        <div class="container-fluid" style="margin-left:27px;">
+                            <div class="row">
+                                <div class="col-xl-10 offset-xl-1">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="hero-info">
+                                                <h2><?php echo $parent['name'];?></h2>
+                                            </div>
+                                            <div class="hero-info">
+                                                <h3 style="margin-bottom:12px;">Information :</h3>
+                                                <ul>
+                                                    <li><span>Date of Birth</span><?php echo $parent['birthdate'];?></li>
+                                                    <li><span>Name Student</span><?php echo $student['name'];?></li>
+                                                    <li><span>Nis Student</span><?php echo $student['nis'];?></li>
+                                                    <li><span>Phone </span><?php echo $parent['phone'];?></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+						  
+					</div>
+				</div><!--End .articles-->
+				
+				
+			</div><!--/.col-->
 		</div><!--/.row-->
 
 	</div>	<!--/.main-->
