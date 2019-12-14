@@ -87,12 +87,13 @@
 							  </tr>
 							</thead>
 							<tbody>
-                            <tr>
-                            <td scope="row">-</td>
-                            <td center>-</td>
-                            <td>-</td>
-                            <td><div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span></div></td>
-                            </tr>
+                                  <tr>
+                                        <th scope="row"><?php echo $att['name']; ?></th>
+                                        <td><?php echo $att['totalattend']; ?></td>
+                                        <td><?php echo $att['totalclassmeeting']; ?></td>
+										<?php $c=($att['totalattend']/$att['totalclassmeeting'])*100;?>
+										<td><div class="easypiechart" id="easypiechart-blue" data-percent="<?php echo $c; ?>" ><span class="percent"><?php echo $c; ?>%</span></div></td>
+                                    </tr>                 
                             
 							</tbody>
 						  </table>

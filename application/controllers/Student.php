@@ -56,6 +56,7 @@ class Student extends CI_Controller{
         }
 
         $data['student']=$this->StudentModel->get_data_user($this->session->userdata('id'));
+        $data['att']=$this->StudentModel->get_data_attendace($this->session->userdata('id'));
         $this->load->view('pages/Student/attendance', $data);
     }
 
