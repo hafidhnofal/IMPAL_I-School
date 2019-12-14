@@ -116,6 +116,11 @@
 		
 		<div class="row">
 			<div class="col-lg-12">
+			<?php
+		if($this->session->flashdata('alert')) {
+  			$message = $this->session->flashdata('alert');?>
+			<div class="alert bg-<?php echo $message['class']?>" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em><?php echo $message['message']; ?> </div>
+		<?php }?>
 				<h1 class="page-header">Show All Parent</h1>
 			</div>
 		</div><!--/.row-->
@@ -156,7 +161,7 @@
                                         <td><?php echo $data['class_classid']; ?></td>
                                         <td><?php echo $data['password']; ?></td>
                                         <td>
-											<a href=""><button class="btn btn-primary">Edit</button></a>
+											<a href="<?php echo base_url(); ?>admin/e_parent/<?= $data['phone'] ?>"><button class="btn btn-primary">Edit</button></a>
 										</td>
                                     </tr>
                                   <?php endforeach; ?>
@@ -183,6 +188,15 @@
 	<script src="<?php echo base_url();?>asset/js/easypiechart-data.js"></script>
 	<script src="<?php echo base_url();?>asset/js/bootstrap-datepicker.js"></script>
 	<script src="<?php echo base_url();?>asset/js/custom.js"></script>
-	
+	<script type="application/javascript">  
+     /** After windod Load */  
+     $(window).bind("load", function() {  
+       window.setTimeout(function() {  
+         $(".alert").fadeTo(500, 0).slideUp(500, function() {  
+           $(this).remove();  
+         });  
+       }, 2000);  
+     });  
+   </script>
 </body>
 </html>

@@ -413,5 +413,44 @@ class Admin extends CI_Controller{
             }
         }
     }
+    function e_parent($phone){
+        if(!$this->session->userdata('id') || $this->session->userdata('status')!='admin'){
+			redirect(base_url());
+        }
+    
+        $c = $this->input->post('class');
+        $data['idcls']=$c;
+        $data['admin']=$this->AdminModel->get_data_user($this->session->userdata('id'));
+        $data['class']=$this->AdminModel->get_class(); 
+        $data['par']=$this->AdminModel->get_data_parents($phone);
+        $this->load->view('pages/Admin/parent_edit', $data);
+    }
 
+    function edit_parent($phone){
+        if(!$this->session->userdata('id') || $this->session->userdata('status')!='admin'){
+			redirect(base_url());
+        }
+
+
+        $name = $this->input->post('name');
+        $gen = $this->input->post('gender');
+        $birth = $this->input->post('bday');
+        $pass = $this->input->post('pass');
+
+        $data_update = array (
+            'name' => $name,
+            'gender' => $gen,
+            'birthdate' => $birth,
+            'password' => $pass,
+        );
+
+        $update = $this->AdminModel->update_data('phone','parent',$data_update, $phone);
+
+        if($update){
+            $this->session->set_flashdata('alert', array('message' => 'Parent Number Phone: '.$phone.' Edited!','class' => 'success'));
+            redirect(base_url('admin/parent_show'));
+        }else{
+            echo "<script>alert('Error Edited Data!');</script>";
+        } 
+    }
 }

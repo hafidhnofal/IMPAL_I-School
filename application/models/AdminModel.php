@@ -63,6 +63,12 @@ class AdminModel extends CI_Model{
 		return $this->db->get_where($table,$where);
 	}
 
+	function get_data_parents($phone){
+		$this->db->where('phone',$phone);
+		$usr=$this->db->query("SELECT s.nis, s.name as s_name, p.name as p_name, p.phone, p.gender, p.birthdate, p.password, s.class_classid FROM `parent` as p join student as s on (s.nis = p.nis) where p.phone=$phone");
+		
+		return $usr->row_array();
+	}
 	function get_data_parent(){
 		$usr=$this->db->query("SELECT s.nis, s.name as s_name, p.name as p_name, p.phone, p.gender, p.birthdate, p.password, s.class_classid FROM `parent` as p join student as s on (s.nis = p.nis)");
 		return $usr->result_array();
@@ -73,4 +79,15 @@ class AdminModel extends CI_Model{
 		$usr=$this->db->get("student");
 		return $usr->result_array();
 	}
+
+	function update_data($tbl,$table,$data,$id){
+        $this->db->where($tbl, $id);
+        $update = $this->db->update($table,$data);
+    
+        if ($update){
+          return TRUE;
+        }else{
+          return FALSE;
+        }
+      }
 }

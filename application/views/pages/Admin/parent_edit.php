@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Admin - Input Parent</title>
+	<title>Admin - Edit Parent</title>
 	<link href="<?php echo base_url();?>asset/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>asset/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>asset/css/datepicker3.css" rel="stylesheet">
@@ -88,7 +88,7 @@
 				</ul>
 			</li>
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-4">
-				<em class="fa fa-book">&nbsp;</em> Parent Data - Input<span data-toggle="collapse" href="#sub-item-4" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				<em class="fa fa-book">&nbsp;</em> Parent Data - Edit<span data-toggle="collapse" href="#sub-item-4" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-4">
 					<li><a class="" href="<?php echo base_url();?>admin/parent_show">
@@ -110,13 +110,13 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Parent Data - Input Parent</li>
+				<li class="active">Parent Data - Edit</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Input Parent</h1>
+				<h1 class="page-header">Edit Parent</h1>
 			</div>
 		</div><!--/.row-->
 
@@ -132,70 +132,52 @@
 					<div class="panel-body">
 						<div class="panel-body">
 
-                        <form class="form-horizontal" action="<?php echo base_url().'/admin/get_stu_from_class';?>" method="post">                                   
-                                            <label class="-label" for="name">Class</label>
-                                            
-                                            <select class="form-control-sm" name="class" onchange="this.form.submit();">
-                                                <option value="">Choose the class first...</option>
-                                                <?php foreach($class as $each){ ?>
-                                                        
-                                                        <option <?php if($each['classid']==$idcls) echo 'selected="selected"'; ?> value="<?php echo $each['classid']; ?>"><?php echo $each['classnumber']; ?></option>;
-                                                        <?php }?>
-                                            </select>
-                                           
-                                       
-                                    </form>
-
-							<form class="form-horizontal" action="<?php echo base_url().'/admin/input_parent';?>" method="post">
+							<form class="form-horizontal" action="<?php echo base_url(); ?>admin/edit_parent/<?= $par['phone'] ?>" method="post">
 								<fieldset>
 									<!-- Name input-->
                                     <div class="form-group">
-										<label class="col-md-2 control-label" for="name">NIS Student</label>
+										<label class="col-md-2 control-label" for="name">Name Student</label>
 										<div class="col-md-8">
-                                        <select class="form-control-sm" name="nis">
-                                            <?php foreach($stuc as $each){ ?>
-                                                    <option value="<?php echo $each['nis']; ?>"><?php echo $each['nis']; ?> - <?php echo $each['name']; ?></option>;
-                                                    <?php }?>
-                                        </select>
+                                        <?php echo $par['s_name'];?>
 										</div>
 									</div>
                                     <div class="form-group">
 										<label class="col-md-2 control-label" for="name">Phone</label>
 										<div class="col-md-8">
-                                            <input id="subject" name="phone" type="number" placeholder="phone.." class="form-control">
+                                            <input id="subject" name="phone" type="number" placeholder="phone.." class="form-control" value="<?php echo $par['phone'];?>" disabled>
 										</div>
 									</div>	
 
                                     <div class="form-group">
 										<label class="col-md-2 control-label" for="name">Name Parent</label>
 										<div class="col-md-8">
-											<input id="subject" name="name" pattern="[A-Za-z\s]*" type="text" placeholder="name.." class="form-control">
+											<input id="subject" name="name" pattern="[A-Za-z\s]*" type="text" placeholder="name.." class="form-control"value="<?php echo $par['p_name'];?>"> 
 										</div>
 									</div>		
                                     <div class="form-group">
 										<label class="col-md-2 control-label" for="name">Gender</label>
 										<div class="col-md-8">
-                                            <input type="radio" name="gender" id="male" value="l"> Male<br/>
-                                            <input type="radio" name="gender" id="female" value="p"> Female
+                                            <input type="radio" name="gender" id="male" value="l" <?php if($par['gender']=='l'){ echo "checked";}?>> Male<br/>
+                                            <input type="radio" name="gender" id="female" value="p" <?php if($par['gender']=='p'){ echo "checked";}?>> Female
 										</div>
 									</div>	
                                     <div class="form-group">
 										<label class="col-md-2 control-label" for="name">Birthdate</label>
 										<div class="col-md-8">
-                                        <input type="date" data-date="" data-date-format="YYYY-MM-DD" name="bday" min="2000-01-02" max="2015-12-31">
+                                        <input type="date" data-date="" data-date-format="YYYY-MM-DD" name="bday" min="2000-01-02" max="2015-12-31" value="<?php echo $par['birthdate'];?>">
 										</div>
 									</div>	                                  
 
                                     <div class="form-group">
 										<label class="col-md-2 control-label" for="name">Password</label>
 										<div class="col-md-8">
-											<input id="subject" name="pass" type="text" placeholder="pass.." class="form-control">
+											<input id="subject" name="pass" type="text" placeholder="pass.." class="form-control" value="<?php echo $par['password'];?>">
 										</div>
 									</div>	
 									<!-- Form actions -->
 									<div class="form-group">
 										<div class="col-md-9 widget-right">
-											<button type="submit" class="btn btn-info btn-md pull-right">Add Parent</button>
+											<button type="submit" class="btn btn-info btn-md pull-right">Edit Parent</button>
 										</div>
 									</div>
 								</fieldset>
