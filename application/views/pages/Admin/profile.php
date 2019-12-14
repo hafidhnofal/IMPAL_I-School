@@ -7,6 +7,7 @@
 	<link href="<?php echo base_url();?>asset/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>asset/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>asset/css/datepicker3.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url();?>asset/css/style90.css"/>
 	<link href="<?php echo base_url();?>asset/css/styles.css" rel="stylesheet">
 	
 	<!--Custom Font-->
@@ -50,7 +51,7 @@
 		</form>
 		<ul class="nav menu">
 			<li><a href="<?php echo base_url();?>admin/home"><em class="fa fa-home">&nbsp;</em> Home</a></li>
-			<li class="active"><a href="<?php echo base_url();?>admin/subject"><em class="fa fa-list-alt">&nbsp;</em> Subject</a></li>
+			<li><a href="<?php echo base_url();?>admin/subject"><em class="fa fa-list-alt">&nbsp;</em> Subject</a></li>
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 				<em class="fa fa-calendar">&nbsp;</em> Schedule <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
@@ -99,7 +100,7 @@
 					</a></li>
 				</ul>
 			</li>
-			<li><a href="<?php echo base_url();?>admin/profile"><em class="fa fa-exclamation-circle">&nbsp;</em> Admin Profile</a></li>
+			<li  class="active"><a href="<?php echo base_url();?>admin/profile"><em class="fa fa-exclamation-circle">&nbsp;</em> Admin Profile</a></li>
 	
 		</ul>
 	</div><!--/.sidebar-->
@@ -115,70 +116,45 @@
 		</div><!--/.row-->
 		
 		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Subject</h1>
-			</div>
-		</div><!--/.row-->
-
-		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-12">
 				<div class="panel panel-default articles">
-					<div class="panel-heading">All Subject</div>
+					<div class="panel-heading">Your Profile</div>
 					
 					<div class="panel-body articles-container">
-						<table class="table">
-							<thead class="thead-dark">
-							  <tr>
-								<th scope="col">Id</th>
-								<th scope="col">Subject Name</th>
-								<th scope="col">Action</th>
-							  </tr>
-							</thead>
-							<tbody>
-                            <?php foreach ($sub as $data): ?>
-                                  <tr>
-                                        <th scope="row"><?php echo $data['subjectid']; ?></th>
-                                        <td><?php echo $data['subjectname']; ?></td>
-										<td>
-											<a href="<?php echo base_url(); ?>admin/delete_sub/<?= $data['subjectid'] ?>"><button class="btn btn-danger">Delete</button></a>
-										</td>
-                                    </tr>
-                                  <?php endforeach; ?>
-							</tbody>
-						  </table>
+                    <section class="hero-section spad">
+                        <div class="container-fluid" style="margin-left:27px;">
+                            <div class="row">
+                                <div class="col-xl-10 offset-xl-1">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="hero-info">
+                                                <h2><?php echo $admin['name'];?></h2>
+                                                <h2><?php echo $admin['adminid'];?></h2>
+                                            </div>
+                                            <div class="hero-info">
+                                                <h3 style="margin-bottom:12px;">Information :</h3>
+                                                <ul>
+                                                    <li><span>Date of Birth</span><?php echo $admin['birthdate'];?></li>
+                                                    <li><span>Your Age</span><?php echo date_diff(date_create($admin['birthdate']),date_create('today'))->y; ?></li>
+                                                    <li><span>Gender</span><?php if($admin['gender']=='l'){
+                                                            echo "Male";
+                                                        }else{
+                                                            echo "Female";
+                                                        }; ?></li>
+                                                    <li><span>Phone </span><?php echo $admin['phone'];?></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 						  
 					</div>
 				</div><!--End .articles-->
 				
 				
-			</div><!--/.col-->
-			
-			<div class="col-md-6">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						Add Subject</div>
-					<div class="panel-body">
-						<div class="panel-body">
-							<form class="form-horizontal" action="<?php echo site_url().'/admin/input_subject';?>" method="post">
-								<fieldset>
-									<!-- Name input-->
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="name">Subject</label>
-										<div class="col-md-9">
-											<input id="subject" name="subject" type="text" pattern="[A-Za-z]*" placeholder="Subject" class="form-control">
-										</div>
-									</div>							
-									<!-- Form actions -->
-									<div class="form-group">
-										<div class="col-md-12 widget-right">
-											<button type="submit" class="btn btn-default btn-md pull-right">Add</button>
-										</div>
-									</div>
-								</fieldset>
-							</form>
-						</div>
-					</div>
-				</div>
 			</div><!--/.col-->
 		</div><!--/.row-->
 	</div>	<!--/.main-->

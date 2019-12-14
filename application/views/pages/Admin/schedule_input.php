@@ -109,8 +109,7 @@ if (isset($_POST['class'])){
 					</a></li>
 				</ul>
 			</li>
-			<li><a href="charts.html"><em class="fa fa-exclamation-circle">&nbsp;</em> Admin Profile</a></li>
-			<li><a href="charts.html"><em class="fa fa-pencil-square-o">&nbsp;</em> Edit Profile</a></li>
+			<li><a href="<?php echo base_url();?>admin/profile"><em class="fa fa-exclamation-circle">&nbsp;</em> Admin Profile</a></li>
 			
 		</ul>
 	</div><!--/.sidebar-->

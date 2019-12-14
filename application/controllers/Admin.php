@@ -19,6 +19,14 @@ class Admin extends CI_Controller{
         $data['admin']=$this->AdminModel->get_data_user($this->session->userdata('id'));
         $this->load->view('pages/AdminHome', $data);
     }
+    function profile(){
+        if(!$this->session->userdata('id') || $this->session->userdata('status')!='admin'){
+			redirect(base_url());
+        }
+        
+        $data['admin']=$this->AdminModel->get_data_user($this->session->userdata('id'));
+        $this->load->view('pages/Admin/profile', $data);
+    }
 //Subject
     function subject(){
         if(!$this->session->userdata('id') || $this->session->userdata('status')!='admin'){
