@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2019 at 12:16 PM
+-- Generation Time: Dec 14, 2019 at 12:27 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.2.23
 
@@ -166,6 +166,56 @@ INSERT INTO `student` (`nis`, `name`, `gender`, `birthdate`, `phone`, `password`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `stu_has_attend`
+--
+
+CREATE TABLE `stu_has_attend` (
+  `id` int(11) NOT NULL,
+  `nis` int(11) NOT NULL,
+  `totalattend` int(11) NOT NULL,
+  `totalclassmeeting` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `stu_has_attend`
+--
+
+INSERT INTO `stu_has_attend` (`id`, `nis`, `totalattend`, `totalclassmeeting`) VALUES
+(6, 113001, 2, 2),
+(7, 113002, 2, 2),
+(8, 113003, 2, 2),
+(9, 113004, 2, 2),
+(10, 113005, 2, 2),
+(11, 112001, 2, 2),
+(12, 112002, 2, 2),
+(13, 112003, 1, 2),
+(14, 112004, 2, 2),
+(15, 112005, 2, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stu_has_sub`
+--
+
+CREATE TABLE `stu_has_sub` (
+  `id` int(11) NOT NULL,
+  `nis` int(11) NOT NULL,
+  `subjectid` int(11) NOT NULL,
+  `nilai_akhir` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `stu_has_sub`
+--
+
+INSERT INTO `stu_has_sub` (`id`, `nis`, `subjectid`, `nilai_akhir`) VALUES
+(17, 112001, 13, 70),
+(18, 112002, 14, 88);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `subject`
 --
 
@@ -186,6 +236,47 @@ INSERT INTO `subject` (`subjectid`, `subjectname`) VALUES
 (16, 'Pendidikan Jasmani'),
 (17, 'Ilmu Pengetahuan Alam'),
 (18, 'Ilmu Pengetahuan Sosial');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_has_a`
+--
+
+CREATE TABLE `s_has_a` (
+  `id` int(11) NOT NULL,
+  `nis` int(11) NOT NULL,
+  `assignmentid` int(11) NOT NULL,
+  `grade` int(11) NOT NULL,
+  `submint` char(1) NOT NULL,
+  `image_s` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `s_has_a`
+--
+
+INSERT INTO `s_has_a` (`id`, `nis`, `assignmentid`, `grade`, `submint`, `image_s`) VALUES
+(17, 112001, 11, 90, '1', '1576321779.jpg'),
+(18, 112002, 11, 90, '1', '1576321818.jpg'),
+(19, 112003, 11, 0, '0', '0'),
+(20, 112004, 11, 0, '1', '1576322039.jpg'),
+(21, 112005, 11, 0, '0', '0'),
+(22, 112001, 12, 0, '1', '1576321785.jpg'),
+(23, 112002, 12, 0, '0', '0'),
+(24, 112003, 12, 0, '1', '1576321834.jpg'),
+(25, 112004, 12, 0, '0', '0'),
+(26, 112005, 12, 0, '0', '0'),
+(27, 113001, 13, 0, '0', '0'),
+(28, 113002, 13, 0, '0', '0'),
+(29, 113003, 13, 0, '0', '0'),
+(30, 113004, 13, 0, '0', '0'),
+(31, 113005, 13, 0, '0', '0'),
+(32, 113001, 14, 0, '0', '0'),
+(33, 113002, 14, 0, '0', '0'),
+(34, 113003, 14, 0, '0', '0'),
+(35, 113004, 14, 0, '0', '0'),
+(36, 113005, 14, 0, '0', '0');
 
 -- --------------------------------------------------------
 
@@ -323,10 +414,33 @@ ALTER TABLE `student`
   ADD KEY `student_class_fk` (`class_classid`);
 
 --
+-- Indexes for table `stu_has_attend`
+--
+ALTER TABLE `stu_has_attend`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `nis_attend_fk` (`nis`);
+
+--
+-- Indexes for table `stu_has_sub`
+--
+ALTER TABLE `stu_has_sub`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `stu_sub_fk` (`nis`),
+  ADD KEY `sub_stu_fk` (`subjectid`);
+
+--
 -- Indexes for table `subject`
 --
 ALTER TABLE `subject`
   ADD PRIMARY KEY (`subjectid`);
+
+--
+-- Indexes for table `s_has_a`
+--
+ALTER TABLE `s_has_a`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `nis_assignment_fk` (`nis`),
+  ADD KEY `s_assignment_fk` (`assignmentid`);
 
 --
 -- Indexes for table `s_has_m`
@@ -369,10 +483,28 @@ ALTER TABLE `parent`
   MODIFY `parentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `stu_has_attend`
+--
+ALTER TABLE `stu_has_attend`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `stu_has_sub`
+--
+ALTER TABLE `stu_has_sub`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
   MODIFY `subjectid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `s_has_a`
+--
+ALTER TABLE `s_has_a`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `s_has_m`
@@ -411,6 +543,26 @@ ALTER TABLE `parent`
 ALTER TABLE `student`
   ADD CONSTRAINT `student_admin_fk` FOREIGN KEY (`admin_adminid`) REFERENCES `admin` (`adminid`),
   ADD CONSTRAINT `student_class_fk` FOREIGN KEY (`class_classid`) REFERENCES `class` (`classid`);
+
+--
+-- Constraints for table `stu_has_attend`
+--
+ALTER TABLE `stu_has_attend`
+  ADD CONSTRAINT `nis_attend_fk` FOREIGN KEY (`nis`) REFERENCES `student` (`nis`);
+
+--
+-- Constraints for table `stu_has_sub`
+--
+ALTER TABLE `stu_has_sub`
+  ADD CONSTRAINT `stu_sub_fk` FOREIGN KEY (`nis`) REFERENCES `student` (`nis`),
+  ADD CONSTRAINT `sub_stu_fk` FOREIGN KEY (`subjectid`) REFERENCES `subject` (`subjectid`);
+
+--
+-- Constraints for table `s_has_a`
+--
+ALTER TABLE `s_has_a`
+  ADD CONSTRAINT `nis_assignment_fk` FOREIGN KEY (`nis`) REFERENCES `student` (`nis`),
+  ADD CONSTRAINT `s_assignment_fk` FOREIGN KEY (`assignmentid`) REFERENCES `assignment` (`assignmentid`);
 
 --
 -- Constraints for table `s_has_m`
