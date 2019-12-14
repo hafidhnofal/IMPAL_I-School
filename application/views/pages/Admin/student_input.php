@@ -63,11 +63,11 @@
 					</a></li>
 				</ul>
 			</li>
-			<li class="parent "><a data-toggle="collapse" href="#sub-item-2">
-				<em class="fa fa-book">&nbsp;</em> Student Data <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
+			<li class="parent active"><a data-toggle="collapse" href="#sub-item-2">
+				<em class="fa fa-book">&nbsp;</em> Student Data - Input<span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-2">
-					<li><a class="active" href="<?php echo base_url();?>admin/student_show">
+					<li><a href="<?php echo base_url();?>admin/student_show">
 						<span class="fa fa-arrow-right">&nbsp;</span> Show All Student
 					</a></li>
 					<li><a class="" href="<?php echo base_url();?>admin/student_input">

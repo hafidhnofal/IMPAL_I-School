@@ -498,9 +498,51 @@ class Admin extends CI_Controller{
         }else{
             $this->session->set_flashdata('alert', array('message' => 'Error Added Student','class' => 'danger'));
             redirect(site_url('admin/student_show'));
+        }   
+    }
+    function e_teacher($nip){
+        if(!$this->session->userdata('id') || $this->session->userdata('status')!='admin'){
+			redirect(base_url());
         }
-        
+    
+        $c = $this->input->post('class');
+        $data['idcls']=$c;
+        $data['admin']=$this->AdminModel->get_data_user($this->session->userdata('id'));
+        $data['class']=$this->AdminModel->get_class(); 
+        $data['teacher']=$this->AdminModel->get_data_teachers($nip);
+        $this->load->view('pages/Admin/teacher_edit', $data);
+    }
 
-        
+    function edit_teacher($nip){
+        if(!$this->session->userdata('id') || $this->session->userdata('status')!='admin'){
+			redirect(base_url());
+        }
+
+        $name = $this->input->post('name');
+        $gen = $this->input->post('gender');
+        $birth = $this->input->post('bday');
+        $phone = $this->input->post('phone');
+        if($phone<1){
+            $this->session->set_flashdata('alert', array('message' => 'Phone Cant Minus!','class' => 'danger'));
+            redirect(site_url('admin/teacher_input'));
+        }
+        $pass = $this->input->post('pass');
+
+        $data_update = array (
+            'name' => $name,
+            'gender' => $gen,
+            'birthdate' => $birth,
+            'phone' => $phone,
+            'password' => $pass,
+        );
+
+        $update = $this->AdminModel->update_data('nip','teacher',$data_update, $nip);
+
+        if($update){
+            $this->session->set_flashdata('alert', array('message' => 'Teacher NIP: '.$nip.' Edited!','class' => 'success'));
+            redirect(site_url('admin/teacher_show'));
+        }else{
+            echo "<script>alert('Gagal Menambahkan Data');</script>";
+        } 
     }
 }

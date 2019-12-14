@@ -64,6 +64,12 @@ class AdminModel extends CI_Model{
 		$usr=$this->db->get("teacher");
 		return $usr->result_array();
 	}
+	function get_data_teachers($nip){
+		$this->db->where('nip',$nip);
+		$this->db->join('class', 'class.classid = teacher.class_classid');
+		$usr=$this->db->get("teacher");
+		return $usr->row_array();
+	}
 
 	function cek_data($table, $where){		
 		return $this->db->get_where($table,$where);

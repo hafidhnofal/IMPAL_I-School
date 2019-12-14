@@ -87,11 +87,11 @@
 					</a></li>
 				</ul>
 			</li>
-			<li class="parent "><a data-toggle="collapse" href="#sub-item-4">
+			<li class="parent active"><a data-toggle="collapse" href="#sub-item-4">
 				<em class="fa fa-book">&nbsp;</em> Parent Data - Show<span data-toggle="collapse" href="#sub-item-4" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-4">
-					<li><a class="active" href="<?php echo base_url();?>admin/parent_show">
+					<li><a href="<?php echo base_url();?>admin/parent_show">
 						<span class="fa fa-arrow-right">&nbsp;</span> Show All Parent
 					</a></li>
 					<li><a class="" href="<?php echo base_url();?>admin/parent_input">

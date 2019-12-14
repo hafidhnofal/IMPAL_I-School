@@ -51,7 +51,7 @@
 		<ul class="nav menu">
         <li><a href="<?php echo base_url();?>admin/home"><em class="fa fa-home">&nbsp;</em> Home</a></li>
 			<li><a href="<?php echo base_url();?>admin/subject"><em class="fa fa-list-alt">&nbsp;</em> Subject</a></li>
-			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+			<li class="parent active"><a data-toggle="collapse" href="#sub-item-1">
 				<em class="fa fa-calendar">&nbsp;</em> Schedule <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
