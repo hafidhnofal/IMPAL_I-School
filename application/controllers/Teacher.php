@@ -21,6 +21,15 @@ class Teacher extends CI_Controller{
         $this->load->view('pages/TeacherHome', $data);
     }
 
+    function profile(){
+        if(!$this->session->userdata('id') || $this->session->userdata('status')!='teacher'){
+			redirect(base_url());
+        }
+        
+        $data['teacher']=$this->TeacherModel->get_data_user($this->session->userdata('id'));
+        $this->load->view('pages/Teacher/profile', $data);
+    }
+
     function materials(){
         if(!$this->session->userdata('id') || $this->session->userdata('status')!='teacher'){
 			redirect(base_url());
