@@ -80,7 +80,6 @@
 						<table class="table">
 							<thead class="thead-dark">
 							  <tr>
-								<th scope="col">Subject Name</th>
 								<th scope="col">Name</th>
 								<th scope="col">Total Attendance</th>
                                 <th scope="col">Total Class Metting</th>
@@ -91,7 +90,6 @@
                             <tr>
                             <td scope="row">-</td>
                             <td center>-</td>
-                            <td>-</td>
                             <td>-</td>
                             <td><div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span></div></td>
                             </tr>

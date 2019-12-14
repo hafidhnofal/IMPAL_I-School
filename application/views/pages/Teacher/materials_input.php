@@ -131,8 +131,10 @@
 								</div>
 								
 								<div class="form-group">
-                                    <label>Upload Image</label>
-	                                    <input type="file" name="userfile" id="userfile" size="20">
+                                    <label>Upload Image</label><br>
+									<div class="btn btn-primary btn-sm float-left">
+										<input type="file" name="userfile" id="userfile" size="20">
+									</div>
 									
 								</div>
                                 <button type="submit" class="btn btn-primary btn-md pull-right">Add</button> 

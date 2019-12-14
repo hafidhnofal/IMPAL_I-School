@@ -67,7 +67,7 @@
 				</ul>
 			</li>
 			<li class="parent active"><a data-toggle="collapse" href="#sub-item-2">
-				<em class="fa fa-calendar">&nbsp;</em> Assignment - Show All<span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				<em class="fa fa-calendar">&nbsp;</em> Assignment - Input<span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-2">
 					<li><a class="" href="<?php echo base_url();?>teacher/assignment">
@@ -133,7 +133,11 @@
 								
 								<div class="form-group">
                                     <label>Upload Image</label>
-	                                    <input type="file" name="userfile" id="userfile" size="20">
+									<br>
+									<div class="btn btn-primary btn-sm float-left">
+										<input type="file" name="userfile" id="userfile" size="20">
+									</div>
+	                                    
 									
 								</div>
                                 <button type="submit" class="btn btn-primary btn-md pull-right">Add</button> 

@@ -121,8 +121,8 @@
                                         <td><?php echo $data['name']; ?></td>
                                         <td>
                                         
-                                        <input type="radio" name="<?php echo $data['nis']; ?>" id="" value="hadir"><label class="" for="message">Present</label>
-                                        <input type="radio" name="<?php echo $data['nis']; ?>" id="" value="tidak"><label class="" for="message">Not Present</label>
+                                        <input type="radio" name="<?php echo $data['nis']; ?>" value="hadir" class="" id=""><label>Present</label>
+                                        <input type="radio" name="<?php echo $data['nis']; ?>" value="tidak" class="" id="" ><label>Not Present</label>
 										</td>
                                     </tr>
                                   <?php endforeach; ?>
@@ -131,7 +131,7 @@
                             
                             
 						  </table>
-                          <button type="submit" class="btn btn-default btn-md pull-right">Add</button>
+                          <button type="submit" class="btn btn-primary btn-md pull-right">Add Present</button>
 						  </form>
 					</div>
 				</div><!--End .articles-->
