@@ -351,4 +351,45 @@ class Teacher extends CI_Controller{
   
         $this->load->view('pages/Teacher/attendance', $data);
     }
+
+    function present($cls){
+        if(!$this->session->userdata('id') || $this->session->userdata('status')!='teacher'){
+			redirect(base_url());
+        }
+
+        $nis=$this->TeacherModel->get_nis($cls);
+
+        foreach ($nis as $row){
+            $pre=$this->input->post($row['nis']);
+           
+            if($pre=="hadir"){$val=1;}elseif($pre=="tidak"){$val=0;}
+                $where = array(
+                    'nis' => $row['nis']);
+                $cek = $this->TeacherModel->cek_data('stu_has_attend',$where)->num_rows();
+                if($cek>0){
+                    $att=$this->TeacherModel->get_data_attendace($row['nis']);
+                    $data_update = array (
+                        'totalattend' => $att['totalattend']+$val,
+                        'totalclassmeeting' => $att['totalclassmeeting']+1);
+                    $update = $this->TeacherModel->update_data('nis','stu_has_attend',$row['nis'],$data_update);
+                }else{
+                    
+                    $data_insert = array (
+                        'nis' => $row['nis'],
+                        'totalattend' => $val,
+                        'totalclassmeeting' => 1);
+                    $insert = $this->TeacherModel->input_data('stu_has_attend',$data_insert);
+                }
+            
+        }
+
+        
+
+        //if($insert){
+            $this->session->set_flashdata('alert', array('message' => 'Success Add Present','class' => 'success'));
+            redirect(site_url('teacher/attendance'));
+       //}else{
+            $this->session->set_flashdata('alert', array('message' => 'Error Add Assignment','class' => 'danger'));
+        //}
+    }
 }

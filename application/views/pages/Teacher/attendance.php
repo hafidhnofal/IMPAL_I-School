@@ -102,7 +102,7 @@
 					<div class="panel-heading"> List Student</div>
 					
 					<div class="panel-body articles-container">
-                    <form action="" method="post">
+                    <form action="<?php echo base_url(); ?>teacher/present/<?=$teacher['classid'] ?>" method="post">
 						<table class="table">
 							<thead class="thead-dark">
 							  <tr>

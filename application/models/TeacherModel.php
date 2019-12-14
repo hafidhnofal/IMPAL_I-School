@@ -154,4 +154,13 @@ class TeacherModel extends CI_Model{
         $hasil = $this->db->get("stu_has_sub");
         return $hasil->result_array();
       }
+
+      function cek_data($table, $where){		
+        return $this->db->get_where($table,$where);
+      }
+
+      function get_data_attendace($nis){
+        $this->db->where("nis", $nis);
+        return $this->db->get('stu_has_attend')->row_array();
+    }
 }
