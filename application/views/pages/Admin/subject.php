@@ -165,7 +165,7 @@
 									<div class="form-group">
 										<label class="col-md-3 control-label" for="name">Subject</label>
 										<div class="col-md-9">
-											<input id="subject" name="subject" type="text" pattern="[A-Za-z]*" placeholder="Subject" class="form-control">
+											<input id="subject" name="subject" type="text" pattern="[A-Za-z\s]*" placeholder="Subject" class="form-control">
 										</div>
 									</div>							
 									<!-- Form actions -->

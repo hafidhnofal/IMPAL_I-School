@@ -25,7 +25,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="#"><span>Welcome</span>, Admin of I-School</a>
+				<a class="navbar-brand" href="#"><span>Welcome</span>, Student of I-School</a>
 				<ul class="nav navbar-top-links navbar-right">
 						<li class="dropdown"><a href="<?php echo base_url();?>login/logout" ><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 				</ul>

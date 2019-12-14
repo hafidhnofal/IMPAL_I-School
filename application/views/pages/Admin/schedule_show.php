@@ -288,7 +288,7 @@
                                 <td scope="col"> <?php 
                                     $s=0;
                                         foreach($sc as $scd){
-                                            if($scd['times']=='08.00-09.00' and $scd['day']=='Thursday	'){
+                                            if($scd['times']=='08.00-09.00' and $scd['day']=='Thursday'){
                                                 echo $scd['subjectname'];
                                                 $s=1;
                                                 break;
