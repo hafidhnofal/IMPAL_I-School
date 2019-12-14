@@ -21,6 +21,15 @@ class Student extends CI_Controller{
         $this->load->view('pages/StudentHome', $data);
     }
 
+    function profile(){
+      if(!$this->session->userdata('id') || $this->session->userdata('status')!='student'){
+        redirect(base_url());
+      }
+      
+      $data['student']=$this->StudentModel->get_data_user($this->session->userdata('id'));
+      $this->load->view('pages/Student/profile', $data);
+  }
+
     function grade(){
         if(!$this->session->userdata('id') || $this->session->userdata('status')!='student'){
 			redirect(base_url());
