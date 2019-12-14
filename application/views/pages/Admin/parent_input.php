@@ -182,7 +182,7 @@
                                     <div class="form-group">
 										<label class="col-md-2 control-label" for="name">Birthdate</label>
 										<div class="col-md-8">
-                                        <input type="date" data-date="" data-date-format="YYYY-MM-DD" name="bday" min="2000-01-02" max="2015-12-31">
+                                        <input type="date" data-date="" data-date-format="YYYY-MM-DD" name="bday" min="1960-01-02" max="2015-12-31">
 										</div>
 									</div>	                                  
 
