@@ -67,7 +67,7 @@
 				</ul>
 			</li>
 			<li class="parent active"><a data-toggle="collapse" href="#sub-item-2">
-				<em class="fa fa-calendar">&nbsp;</em> Assignment - Show<span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				<em class="fa fa-calendar">&nbsp;</em> Assignment - Edit<span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-2">
 					<li><a class="" href="<?php echo base_url();?>teacher/assignment">
@@ -92,41 +92,60 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Assignment - Show</li>
+				<li class="active">Assignment - Input</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
         <div class="col-md-12">
-		<?php
-		if($this->session->flashdata('alert')) {
-  			$message = $this->session->flashdata('alert');?>
-			<div class="alert bg-<?php echo $message['class']?>" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em><?php echo $message['message']; ?> </div>
-		<?php }?>
-        <div class="panel panel-default ">
-					<div class="panel-heading">Assignment</div>
-					<div class="panel-body timeline-container">
-						<ul class="timeline">
-                        <?php foreach ($ass as $data): ?>
-							<li>
-								<div class="timeline-badge default"><i class="fa fa-star-o"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-									
-										<h4 class="timeline-title"><?php echo $data['subjectname']; ?> - <span style="color:black;font-weight:bold"> <?php echo $data['assignmentname']; ?></span></h4>
+		
+        <div class="panel panel-default">
+					<div class="panel-heading"><a href="<?php echo base_url(); ?>teacher/assignment"><button class="btn btn-Link"><em class="fa fa-arrow-left">&nbsp;</em>Back</button></a>
+                    Edit Assignment, for class : <?php echo $teacher['classnumber'];?></div>
+					<div class="panel-body">
+							<form enctype="multipart/form-data" class="form col-md-6" action="<?php echo base_url(); ?>teacher/assignment_edit/<?=$ass['assignmentid'] ?>" method="post">
+                            <!-- Name input-->
+								<div class="form-group">
+									<label class="" for="subject">Subject</label>
+									<div class="">
+                                    <select name="sub" id="" class="form-control" >
+                                        <?php foreach($sub as $each){ ?>
+                                            <option <?php if($each['subjectid']==$ass['subjectid']) echo 'selected="selected"';?> value="<?php echo $each['subjectid']; ?>"><?php echo $each['subjectname']; ?></option>
+                                        <?php }?>
+                                        </select>
 									</div>
-									<div class="timeline-body">
-										<p><?php echo $data['ket_assignment']; ?></p>
-									</div>
-                                    <a href="<?php echo base_url(); ?>teacher/assignment_show/<?= $data['assignmentid'] ?>"><button class="btn btn-info">Readmore...</button></a>
-									<a href="<?php echo base_url(); ?>teacher/e_assignment/<?= $data['assignmentid'] ?>"><button class="btn btn-success">Edit</button></a>
 								</div>
-							</li>
-							<?php endforeach; ?>
-						</ul>
+							
+								<!-- Email input-->
+								<div class="form-group">
+									<label class="" for="email">Title</label>
+									<div class="">
+                                        <input id="" name="title" type="text" placeholder=". . ." class="form-control" value="<?php echo $ass['assignmentname']; ?>">
+									</div>
+								</div>
+								
+								<!-- Message body -->
+								<div class="form-group">
+									<label class="" for="message">Information</label>
+									<div class="">
+                                        <textarea  class="form-control" name="info" id="" cols="30" rows="10" value=""><?php echo $ass['ket_assignment']; ?></textarea>
+									</div>
+								</div>
+								
+								<div class="form-group">
+                                    <label>Upload Image</label>
+									<br>
+									<div class="btn btn-primary btn-sm float-left">
+										<input type="file" name="userfile" id="userfile" size="20" value="<?php echo $ass['image']; ?>">
+									</div>
+	                                    
+									
+								</div>
+                                <button type="submit" class="btn btn-primary btn-md pull-right">Edit</button> 
+                            </form>
+								           
 					</div>
 				</div>
-			</div><!--/.col-->
 		</div><!--/.row-->
 
 	</div>	<!--/.main-->
@@ -140,16 +159,6 @@
 	<script src="<?php echo base_url();?>asset/js/easypiechart-data.js"></script>
 	<script src="<?php echo base_url();?>asset/js/bootstrap-datepicker.js"></script>
 	<script src="<?php echo base_url();?>asset/js/custom.js"></script>
-	<script type="application/javascript">  
-     /** After windod Load */  
-     $(window).bind("load", function() {  
-       window.setTimeout(function() {  
-         $(".alert").fadeTo(500, 0).slideUp(500, function() {  
-           $(this).remove();  
-         });  
-       }, 2000);  
-     });  
-   </script>
 	
 </body>
 </html>

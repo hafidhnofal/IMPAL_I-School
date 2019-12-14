@@ -388,14 +388,69 @@ class Teacher extends CI_Controller{
                 }
             
         }
-
-        
-
         //if($insert){
             $this->session->set_flashdata('alert', array('message' => 'Success Add Present','class' => 'success'));
             redirect(site_url('teacher/attendance'));
        //}else{
             $this->session->set_flashdata('alert', array('message' => 'Error Add Assignment','class' => 'danger'));
         //}
+    }
+
+    function e_assignment($id){
+        if(!$this->session->userdata('id') || $this->session->userdata('status')!='teacher'){
+			redirect(base_url());
+        }
+
+        $cls=$this->TeacherModel->get_id_by_id($this->session->userdata('id'));
+        $data['teacher']=$this->TeacherModel->get_data_user($this->session->userdata('id'));
+        $data['sub']=$this->TeacherModel->get_sub();
+        $data['ass']=$this->TeacherModel->get_data_assignment($id);
+        
+        $this->load->view('pages/Teacher/assignment_edit', $data);
+    }
+
+    function assignment_edit($id){
+        if(!$this->session->userdata('id') || $this->session->userdata('status')!='teacher'){
+			redirect(base_url());
+        }
+
+        $new_name = time().$_FILES["userfiles"]['name'];
+		
+		// Upload Image
+		$config['upload_path'] 		= './img/assignment/';
+		$config['allowed_types'] 	= 'gif|jpg|jpeg|png';
+		$config['file_name'] 		= $new_name;
+		$config['overwrite'] 		= true;
+		$config['max_size'] 		= '2048';
+
+		$this->load->library('upload', $config);
+		if(!$this->upload->do_upload('userfile')){
+			$errors = array('error' => $this->upload->display_errors());
+			$post_image = 'noimage.jpg';
+		} else {
+			$data = array('upload_data' => $this->upload->data());
+			$post_image = $new_name.$this->upload->data('file_ext');
+		}
+
+        $assignment_name = $this->input->post('title');
+        $ket_assignment = $this->input->post('info');
+        $sub = $this->input->post('sub');
+
+        $data_update = array (
+            'assignmentname' => $assignment_name,
+            'ket_assignment' => $ket_assignment,
+            'image' => $post_image,
+            'subjectid' => $sub,
+        );
+
+        $update = $this->TeacherModel->update_data('assignmentid','assignment',$id,$data_update);
+        
+
+        if($update){
+            $this->session->set_flashdata('alert', array('message' => 'Success Edit Assignment','class' => 'success'));
+            redirect(site_url('teacher/assignment'));
+        }else{
+            $this->session->set_flashdata('alert', array('message' => 'Error Edit Assignment','class' => 'danger'));
+        }
     }
 }
