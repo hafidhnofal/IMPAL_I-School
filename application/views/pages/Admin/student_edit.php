@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Admin -  Show All Student</title>
+	<title>Admin - Edit Student</title>
 	<link href="<?php echo base_url();?>asset/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>asset/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>asset/css/datepicker3.css" rel="stylesheet">
@@ -64,7 +64,7 @@
 				</ul>
 			</li>
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-2">
-				<em class="fa fa-book">&nbsp;</em> Student Data <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				<em class="fa fa-book">&nbsp;</em> Student Data - Edit<span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-2">
 					<li><a class="active" href="<?php echo base_url();?>admin/student_show">
@@ -110,67 +110,84 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Student Data - Show All Student</li>
+				<li class="active">Student Data - Edit Student</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-			<?php
-		if($this->session->flashdata('alert')) {
-  			$message = $this->session->flashdata('alert');?>
-			<div class="alert bg-<?php echo $message['class']?>" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em><?php echo $message['message']; ?> </div>
-		<?php }?>
-				<h1 class="page-header">Show All Student</h1>
+				<h1 class="page-header">Edit Student</h1>
 			</div>
 		</div><!--/.row-->
 
 		<div class="row">
 			<div class="col-md-12">
-				<div class="panel panel-default articles">
-                
-                        
-                    </div>
-					
-					<div class="panel-body articles-container">
-						<table class="table table-striped">
-							<thead class="thead-dark">
-							  <tr>
-								<th scope="col">NIS</th>
-								<th scope="col">Name</th>
-								<th scope="col">Gander</th>
-                                <th scope="col">Age</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">Class</th>
-                                <th scope="col">Password</th>
-                                <th scope="col">Action</th>
-							  </tr>
-							</thead>
-                            <tbody>
-                                  <?php foreach ($stu as $data): ?>
-                                  <tr>
-                                        <th scope="row"><?php echo $data['nis']; ?></th>
-                                        <td><?php echo $data['name']; ?></td>
-                                        <td><?php if($data['gender']=='l'){
-                                                echo "Male";
-                                            }else{
-                                                echo "Female";
-                                            }; ?></td>
-										<td><?php echo date_diff(date_create($data['birthdate']),date_create('today'))->y; ?></td>
-										<td><?php echo $data['phone']; ?></td>
-                                        <td><?php echo $data['classnumber']; ?></td>
-                                        <td><?php echo $data['password']; ?></td>
-                                        <td>
-											<a href="<?php echo base_url(); ?>admin/e_student/<?= $data['nis'] ?>"><button class="btn btn-primary">Edit</button></a>
-										</td>
-                                    </tr>
-                                  <?php endforeach; ?>
-
-                                </tbody>
-						  </table>
-						  
+			<?php
+		if($this->session->flashdata('alert')) {
+  			$message = $this->session->flashdata('alert');?>
+			<div class="alert bg-<?php echo $message['class']?>" role="alert"><em class="fa fa-lg fa-warning">&nbsp;</em><?php echo $message['message']; ?> </div>
+		<?php }?>
+            <div class="panel panel-default">
+					<div class="panel-heading"></div>
+					<div class="panel-body">
+						<div class="panel-body">
+							<form class="form-horizontal" action="<?php echo base_url(); ?>admin/edit_student/<?= $student['nis'] ?>" method="post">
+								<fieldset>
+									<!-- Name input-->
+									<div class="form-group">
+										<label class="col-md-2 control-label" for="name">Nis</label>
+										<div class="col-md-8">
+											<input id="subject" name="nis" type="number" placeholder="nis.." class="form-control" disabled value="<?php echo $student['nis']; ?>">
+										</div>
+									</div>	
+                                    <div class="form-group">
+										<label class="col-md-2 control-label" for="name">Name</label>
+										<div class="col-md-8">
+											<input id="subject" name="name" pattern="[A-Za-z\s]*" type="text" placeholder="name.." class="form-control" value="<?php echo $student['name']; ?>">
+										</div>
+									</div>		
+                                    <div class="form-group">
+										<label class="col-md-2 control-label" for="name">Gender</label>
+										<div class="col-md-8">
+                                            <input type="radio" name="gender" id="male" value="l" <?php if($student['gender']=='l'){ echo "checked";}?>> Male<br/>
+                                            <input type="radio" name="gender" id="female" value="p" <?php if($student['gender']=='p'){ echo "checked";}?>> Female
+										</div>
+									</div>	
+                                    <div class="form-group">
+										<label class="col-md-2 control-label" for="name">Birthdate</label>
+										<div class="col-md-8">
+                                        <input type="date" data-date="" data-date-format="YYYY-MM-DD" name="bday" min="2000-01-02" max="2015-12-31"  value="<?php echo $student['birthdate']; ?>">
+										</div>
+									</div>	
+                                    <div class="form-group">
+										<label class="col-md-2 control-label" for="name">Phone</label>
+										<div class="col-md-8">
+                                            <input id="subject" name="phone" type="number" placeholder="phone.." class="form-control"  value="<?php echo $student['phone']; ?>">
+										</div>
+									</div>	
+                                    <div class="form-group">
+										<label class="col-md-2 control-label" for="name">Class</label>
+										<div class="col-md-8">
+                                    <?php echo $student['classnumber']; ?>
+										</div>
+									</div>
+                                    <div class="form-group">
+										<label class="col-md-2 control-label" for="name">Password</label>
+										<div class="col-md-8">
+											<input id="subject" name="pass" type="text" placeholder="pass.." class="form-control"  value="<?php echo $student['password']; ?>">
+										</div>
+									</div>	
+									<!-- Form actions -->
+									<div class="form-group">
+										<div class="col-md-9 widget-right">
+											<button type="submit" class="btn btn-info btn-md pull-right">Edit Student</button>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
 					</div>
-				</div><!--End .articles-->
+				</div>
 				
 				
 			</div><!--/.col-->
@@ -198,5 +215,6 @@
        }, 2000);  
      });  
    </script>
+	
 </body>
 </html>

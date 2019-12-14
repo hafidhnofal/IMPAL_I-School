@@ -53,6 +53,12 @@ class AdminModel extends CI_Model{
 		$usr=$this->db->get("student");
 		return $usr->result_array();
 	}
+	function get_data_students($nis){
+		$this->db->where('nis',$nis);
+		$this->db->join('class', 'class.classid = student.class_classid');
+		$usr=$this->db->get("student");
+		return $usr->row_array();
+	}
 	function get_data_teacher(){
 		$this->db->join('class', 'class.classid = teacher.class_classid');
 		$usr=$this->db->get("teacher");
