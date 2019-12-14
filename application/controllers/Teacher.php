@@ -301,6 +301,9 @@ class Teacher extends CI_Controller{
         if($nilai<1){
             $this->session->set_flashdata('alert', array('message' => 'Grade Cant Minus!','class' => 'danger'));
             redirect(site_url('teacher/grade_open/'.$nis));
+        }elseif($nilai>100){
+            $this->session->set_flashdata('alert', array('message' => 'Grade Range only 0-100','class' => 'danger'));
+            redirect(site_url('teacher/grade_open/'.$nis));
         }
         $data_insert = array (
             'nis' => $nis,
@@ -325,6 +328,9 @@ class Teacher extends CI_Controller{
         $nilai = $this->input->post('nilaiedit');
         if($nilai<1){
             $this->session->set_flashdata('alert', array('message' => 'Grade Cant Minus!','class' => 'danger'));
+            redirect(site_url('teacher/grade_open/'.$nis));
+        }elseif($nilai>100){
+            $this->session->set_flashdata('alert', array('message' => 'Grade Range only 0-100','class' => 'danger'));
             redirect(site_url('teacher/grade_open/'.$nis));
         }
         $data_update = array (
