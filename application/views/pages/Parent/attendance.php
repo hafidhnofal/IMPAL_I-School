@@ -3,18 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Student - Attendance</title>
+	<title>Parent - Grade</title>
 	<link href="<?php echo base_url();?>asset/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>asset/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>asset/css/datepicker3.css" rel="stylesheet">
 	<link href="<?php echo base_url();?>asset/css/styles.css" rel="stylesheet">
-	<link rel="stylesheet" href="<?php echo base_url();?>asset/css/theme-midnight.css" id="theme-css">
-	<!--Custom Font-->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<!--[if lt IE 9]>
-	<script src="js/html5shiv.js"></script>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+	<link rel="stylesheet" href="<?php echo base_url();?>asset/css/theme-lime.css" id="theme-css">
+	
 </head>
 <body>
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -24,9 +19,9 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="#"><span>Welcome</span>, Student of I-School</a>
+				<a class="navbar-brand" href="#"><span>Welcome</span>, Parent of I-School</a>
 				<ul class="nav navbar-top-links navbar-right">
-						<li class="dropdown"><a href="<?php echo base_url();?>login/logout" ><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+						<li class="dropdown"><a href="<?php echo base_url();?>login/logout" style="color:Blue;"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 				</ul>
 			</div>
 		</div><!-- /.container-fluid -->
@@ -37,26 +32,20 @@
 				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-                <div class="profile-usertitle-name"><?php echo $student['name'];?></div>
-				<div class="profile-usertitle-status">Nim: <?php echo $student['nis'];?></div>
-                <div class="profile-usertitle-name">Class: <?php echo $student['classnumber'];?></div>
+				<div class="profile-usertitle-name"><?php echo $parent['name'];?></div>
+				<div class="profile-usertitle-status">Name Student: <?php echo $student['name'];?></div>
+        <div class="profile-usertitle-name">NIS: <?php echo $student['nis'];?></div>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="divider"></div>
-		<form role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-		</form>
+		
 		<ul class="nav menu">
-			<li><a href="<?php echo base_url();?>student/home"><em class="fa fa-home">&nbsp;</em> Home</a></li>
-			<li><a href="<?php echo base_url();?>student/grade"><em class="fa fa-list-alt">&nbsp;</em> Grade</a></li>
-			<li class="active"><a href="<?php echo base_url();?>student/attendance"><em class="fa fa-list-alt">&nbsp;</em> Attendance</a></li>
-            <li><a href="<?php echo base_url();?>student/schedule"><em class="fa fa-list-alt">&nbsp;</em> Schedule</a></li>
-            <li><a href="<?php echo base_url();?>student/materials"><em class="fa fa-list-alt">&nbsp;</em> Materials</a></li>
-			<li><a href="<?php echo base_url();?>student/assignment"><em class="fa fa-exclamation-circle">&nbsp;</em> Assignment</a></li>
-			<li><a href="<?php echo base_url();?>student/profile"><em class="fa fa-pencil-square-o">&nbsp;</em> Profile</a></li>
+			<li><a href="<?php echo base_url();?>parentt/home"><em class="fa fa-home">&nbsp;</em> Home</a></li>
+			<li><a href="<?php echo base_url();?>parentt/grade/<?= $student['nis'] ?>"><em class="fa fa-list-alt">&nbsp;</em> Grade</a></li>
+			<li class="active"><a href="<?php echo base_url();?>parentt/attendance/<?= $student['nis'] ?>"><em class="fa fa-list-alt">&nbsp;</em> Attendance</a></li>
+            <li><a href="<?php echo base_url();?>parentt/schedule/<?= $student['nis'] ?>"><em class="fa fa-list-alt">&nbsp;</em> Schedule</a></li>
+			<li><a href="<?php echo base_url();?>parentt/profile/<?= $student['nis'] ?>"><em class="fa fa-pencil-square-o">&nbsp;</em> Profile</a></li>
 	
 		</ul>
 	</div><!--/.sidebar-->
@@ -67,7 +56,7 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Attendance</li>
+				<li class="active">Grade</li>
 			</ol>
 		</div><!--/.row-->
 		

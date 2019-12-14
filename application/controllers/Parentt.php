@@ -50,6 +50,8 @@ class Parentt extends CI_Controller{
         }
 
         $data['student']=$this->ParentModel->get_data_student($nis);
+        $data['parent']=$this->ParentModel->get_data_user($this->session->userdata('id'));
+        $data['att']=$this->ParentModel->get_data_attendace($nis);
         $this->load->view('pages/Parent/attendance', $data);
     }
 

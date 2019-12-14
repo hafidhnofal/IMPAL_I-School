@@ -33,4 +33,10 @@ class ParentModel extends CI_Model{
         $this->db->where('nis',$nis);
         return $this->db->get()->row()->class_classid;
     }
+
+    function get_data_attendace($nis){
+        $this->db->where("nis", $nis);
+        $this->db->join('student', 'nis');
+        return $this->db->get('stu_has_attend')->row_array();
+    }
 }
